@@ -15,7 +15,7 @@ import pyxivapi
 from pyxivapi.models import Filter, Sort
 from datetime import datetime
 
-APIKEY = "YOUR_API_HERE"
+APIKEY = "YOUR_API_KEY_HERE"
 
 async def find(client, nameStr):
     client = pyxivapi.XIVAPIClient(api_key=APIKEY)
