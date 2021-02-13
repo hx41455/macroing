@@ -1,6 +1,10 @@
 # BLU Hud layout macro generator
 > Because I'm too lazy to craft macros, but not too lazy to write a python script that will craft them for me...
 
+## Requirements
+
+Know how to run python on your computer, iuno, I winged it and got it to work, so I believe in you too lol
+
 ## Usage example
 
 Use https://xivbars.bejezus.com/job/BLU to generate a few HUDs, then get the share url (click the copy button) to get that, and run:
