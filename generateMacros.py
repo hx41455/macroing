@@ -6,13 +6,8 @@ import time
 import datetime
 import os
 import platform
-import asyncio
-import logging
 import json
 
-import aiohttp
-import pyxivapi
-from pyxivapi.models import Filter, Sort
 from datetime import datetime
 
 # SAMPLE = "xivbars.bejezus.com/job/BLU?s=[["11383","0","0","0","11384","0","0","0","11385","0","0","0","11386","0","0","0"],["11392","0","0","0","11393","0","0","0","11394","0","0","0","11389","0","0","0"],["11399","0","0","0","11406","0","0","0","11416","0","0","0","11412","0","0","0"],["11427","0","0","0","11430","0","0","0","11424","0","0","0","11415","0","0","0"]]"
