@@ -3,6 +3,7 @@
 # Imports
 import sys
 import time
+import datetime
 import os
 import platform
 import asyncio
@@ -12,6 +13,7 @@ import json
 import aiohttp
 import pyxivapi
 from pyxivapi.models import Filter, Sort
+from datetime import datetime
 
 # SAMPLE = "xivbars.bejezus.com/job/BLU?s=[["11383","0","0","0","11384","0","0","0","11385","0","0","0","11386","0","0","0"],["11392","0","0","0","11393","0","0","0","11394","0","0","0","11389","0","0","0"],["11399","0","0","0","11406","0","0","0","11416","0","0","0","11412","0","0","0"],["11427","0","0","0","11430","0","0","0","11424","0","0","0","11415","0","0","0"]]"
 
@@ -66,6 +68,9 @@ async def genMacro(argv):
         #     print(" ~~~ ", a, " ~~~ ")
         layout = []
         huds = []
+        hudmacro = []
+        bookmacro = []
+
         if osm == "Windows":
             layout.append(argv[0].split("=[[")[1])
             for i in range(1,4):
@@ -92,15 +97,22 @@ async def genMacro(argv):
                             # index_name = "Action"
                             index_name = "blueAction"
                             id = str(huds[i][j])
+                            bookmacro.append("/bluespellbook set \"" + actions[index_name][id] + "\"")
                         
                         action = actions[index_name][id]
-                        print("/chotbar " + index_name + " \"" + action + "\" " + str(i+1) + " " + ("L" if j < 8 else "R") + ("D" if (j%8) < 4 else "A") + str(((j-1)%4)+1))
+                        hudmacro.append("/chotbar " + index_name + " \"" + action + "\" " + str(i+1) + " " + ("L" if j < 8 else "R") + ("D" if (j%8) < 4 else "A") + str(((j-1)%4)+1))
                         # spell = await client.index_by_id(content_id=int(id),index=index_name,columns=["Name","ClassJobCategory.Name"],language="en")
                         # print("/chotbar " + ("blueAction" if spell["ClassJobCategory"]["Name"] == "BLU" else "Action") + " \"" + spell["Name"] + "\" " + str(i+1) + " " + ("L" if j < 8 else "R") + ("D" if (j%8) < 4 else "A") + str(((j-1)%4)+1))
                         
                         # time.sleep(0.25)
 
-            print(len(actions["blueAction"]))
+        with open(datetime.now().strftime("%Y%m%d%H%M%S")+"_hud.txt",'w') as file:
+            for h in hudmacro:
+                file.write('%s\n' % h)
+        with open(datetime.now().strftime("%Y%m%d%H%M%S")+"_book.txt",'w') as file:
+            for b in bookmacro:
+                file.write('%s\n' % b)
+
     # await client.session.close()
 
 if __name__ == "__main__":
