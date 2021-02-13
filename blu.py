@@ -54,7 +54,7 @@ async def make(client):
 
 async def genMacro(argv):
     osm = platform.system()
-    # client = pyxivapi.XIVAPIClient(api_key="2397925a9e2245f0b9b03caa83219c65063e5672213140aaa00259b18e59a464")
+    # client = pyxivapi.XIVAPIClient(api_key="lol")
     if argv[0] == "make":
         # await make(client)
         pass
